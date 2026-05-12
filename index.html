@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Spice Garden – Authentic Indian Restaurant | Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0800;--bg2:#1a1000;--orange:#ff6b00;--gold:#f5a623;--text:#f0e6d3;--muted:#9e8a72}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
+
+/* DEMO BANNER */
+.demo-banner{background:linear-gradient(90deg,#ff6b00,#ff9500);padding:.55rem 1rem;text-align:center;font-size:.82rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.demo-banner a{color:#fff;text-decoration:underline;font-weight:600}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(15,8,0,.95);backdrop-filter:blur(10px);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(245,166,35,.15)}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold)}
+.logo-text span{color:var(--orange)}
+.nav-links a{color:var(--muted);text-decoration:none;margin-left:1.5rem;font-size:.9rem;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links .cta{background:var(--orange);color:#fff!important;padding:.4rem .9rem;border-radius:20px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:var(--gold);display:block}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;background:linear-gradient(to bottom,rgba(15,8,0,.3),rgba(15,8,0,.8)),url('https://picsum.photos/seed/restaurant1/1400/900') center/cover no-repeat;position:relative}
+.hero-badge{background:rgba(245,166,35,.2);border:1px solid rgba(245,166,35,.4);color:var(--gold);padding:.3rem 1rem;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:.08em;margin-bottom:1rem;display:inline-block}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,7vw,5rem);font-weight:800;line-height:1.1;margin-bottom:1rem}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.15rem;color:#d4bfa5;max-width:500px;margin:0 auto 2rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;padding:.8rem 2rem;border-radius:30px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,0,.4)}
+.btn-outline{border:2px solid var(--gold);color:var(--gold);padding:.8rem 2rem;border-radius:30px;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .2s}
+.btn-outline:hover{background:rgba(245,166,35,.1)}
+.scroll-down{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.8rem;text-align:center;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* SECTIONS */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.8rem;font-weight:700;letter-spacing:.12em;color:var(--orange);text-transform:uppercase;margin-bottom:.5rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem}
+.sec-title span{color:var(--gold)}
+.sec-sub{color:var(--muted);font-size:1rem;margin-bottom:3rem}
+
+/* ABOUT */
+.about-section{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-content .sec-sub{margin-bottom:1.5rem}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.fact{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.15);border-radius:10px;padding:1.2rem;text-align:center}
+.fact-num{font-size:2rem;font-weight:800;color:var(--gold)}
+.fact-label{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+
+/* MENU */
+.menu-section{background:var(--bg)}
+.menu-tabs{display:flex;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.tab{padding:.5rem 1.2rem;border-radius:20px;border:1px solid rgba(245,166,35,.3);color:var(--muted);background:transparent;cursor:pointer;font-size:.88rem;font-family:'Inter',sans-serif;transition:all .2s}
+.tab.active,.tab:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.menu-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden;transition:transform .2s,border-color .2s}
+.menu-card:hover{transform:translateY(-4px);border-color:rgba(245,166,35,.3)}
+.menu-card img{width:100%;height:170px;object-fit:cover}
+.menu-info{padding:1.2rem}
+.menu-info h3{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.menu-info p{font-size:.85rem;color:var(--muted);margin-bottom:.8rem}
+.menu-price{font-size:1rem;font-weight:700;color:var(--gold)}
+.veg-tag,.nonveg-tag{display:inline-block;font-size:.7rem;padding:.1rem .4rem;border-radius:4px;margin-left:.4rem;font-weight:600}
+.veg-tag{background:rgba(40,199,111,.15);color:#28c76f}
+.nonveg-tag{background:rgba(255,59,48,.15);color:#ff3b30}
+
+/* GALLERY */
+.gallery-section{background:var(--bg2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,220px);gap:.8rem}
+.gallery-item{border-radius:10px;overflow:hidden}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item.tall{grid-row:span 2}
+
+/* CONTACT */
+.contact-section{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1.5rem}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem}
+.contact-icon{width:40px;height:40px;background:rgba(255,107,0,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item h4{font-size:.85rem;color:var(--muted);margin-bottom:.2rem}
+.contact-item p{font-size:.95rem}
+.map-placeholder{margin-top:1.5rem;height:180px;background:var(--bg2);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;border:1px solid rgba(255,255,255,.07)}
+form input,form textarea,form select{width:100%;background:var(--bg2);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.8rem 1rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.9rem;margin-bottom:1rem;outline:none;transition:border-color .2s}
+form input:focus,form textarea:focus{border-color:var(--orange)}
+form textarea{height:120px;resize:none}
+form button{background:var(--orange);color:#fff;border:none;padding:.85rem 2rem;border-radius:30px;font-weight:700;font-size:.95rem;cursor:pointer;width:100%;transition:opacity .2s}
+form button:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:#080400;padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(245,166,35,.1)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);margin-bottom:.5rem}
+footer p{color:var(--muted);font-size:.85rem}
+footer a{color:var(--orange);text-decoration:none}
+.social-links{display:flex;gap:1rem;justify-content:center;margin:1rem 0}
+.social-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background .2s}
+.social-btn:hover{background:var(--orange)}
+.footer-note{font-size:.75rem;color:rgba(158,138,114,.5);margin-top:.75rem}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:2rem;right:2rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 4px 16px rgba(37,211,102,.5);text-decoration:none;z-index:999;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.85)}}
+
+@media(max-width:768px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-item.tall{grid-row:span 1}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  ⭐ DEMO — Starter Package (₹4,999) | Single Page Website | <a href="../index.html">← Back to All Packages</a>
+</div>
+
+<nav>
+  <div class="logo-text">Spice <span>Garden</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="https://wa.me/917869729829" class="cta">Order Now</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero" id="home">
+  <div>
+    <div class="hero-badge">🍛 Authentic Indian Cuisine Since 2012</div>
+    <h1>A Taste of<br>True <span>India</span></h1>
+    <p>Experience the rich flavours of handcrafted recipes passed down through generations.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#contact" class="btn-outline">Reserve a Table</a>
+    </div>
+  </div>
+  <div class="scroll-down">↓ Scroll Down</div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://picsum.photos/seed/chefkitchen/600/450" alt="Our Kitchen"/>
+      </div>
+      <div class="about-content">
+        <div class="sec-label">Our Story</div>
+        <h2 class="sec-title">Cooked with <span>Love</span> &amp; Tradition</h2>
+        <p class="sec-sub">Since 2012, Spice Garden has been serving authentic flavours of India in the heart of Chennai. Every dish is prepared fresh daily using traditional spices sourced directly from local farmers.</p>
+        <p style="color:var(--muted);font-size:.92rem;line-height:1.8">Our head chef, trained in Hyderabad and Lucknow, brings decades of expertise to your plate. We believe food is more than just sustenance — it's a story, a memory, an emotion.</p>
+        <div class="about-facts">
+          <div class="fact"><div class="fact-num">12+</div><div class="fact-label">Years of Excellence</div></div>
+          <div class="fact"><div class="fact-num">80+</div><div class="fact-label">Menu Items</div></div>
+          <div class="fact"><div class="fact-num">500+</div><div class="fact-label">Happy Customers Daily</div></div>
+          <div class="fact"><div class="fact-num">4.8 ⭐</div><div class="fact-label">Google Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="sec-label">What We Serve</div>
+    <h2 class="sec-title">Our <span>Specialties</span></h2>
+    <div class="menu-tabs">
+      <button class="tab active">All</button>
+      <button class="tab">Biryani</button>
+      <button class="tab">Curries</button>
+      <button class="tab">Starters</button>
+      <button class="tab">Desserts</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/biryani1/400/250" alt="Hyderabadi Biryani"/>
+        <div class="menu-info">
+          <h3>Hyderabadi Dum Biryani <span class="nonveg-tag">Non-Veg</span></h3>
+          <p>Slow-cooked basmati rice with tender mutton in aromatic spices</p>
+          <span class="menu-price">₹ 280</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/curry2/400/250" alt="Butter Chicken"/>
+        <div class="menu-info">
+          <h3>Butter Chicken <span class="nonveg-tag">Non-Veg</span></h3>
+          <p>Tender chicken in rich, creamy tomato-based sauce</p>
+          <span class="menu-price">₹ 240</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/paneer1/400/250" alt="Paneer Tikka"/>
+        <div class="menu-info">
+          <h3>Paneer Tikka Masala <span class="veg-tag">Veg</span></h3>
+          <p>Marinated cottage cheese in smoky tandoor sauce</p>
+          <span class="menu-price">₹ 220</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/dosa3/400/250" alt="Masala Dosa"/>
+        <div class="menu-info">
+          <h3>Special Masala Dosa <span class="veg-tag">Veg</span></h3>
+          <p>Crispy dosa with spiced potato filling, chutneys &amp; sambar</p>
+          <span class="menu-price">₹ 120</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/kebab1/400/250" alt="Seekh Kebab"/>
+        <div class="menu-info">
+          <h3>Seekh Kebab <span class="nonveg-tag">Non-Veg</span></h3>
+          <p>Minced lamb skewers with fresh herbs, grilled to perfection</p>
+          <span class="menu-price">₹ 180</span>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="https://picsum.photos/seed/gulab1/400/250" alt="Gulab Jamun"/>
+        <div class="menu-info">
+          <h3>Gulab Jamun <span class="veg-tag">Veg</span></h3>
+          <p>Soft milk-solid dumplings soaked in rose-flavoured syrup</p>
+          <span class="menu-price">₹ 80</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="sec-label">Our Ambience</div>
+    <h2 class="sec-title">A Feast for the <span>Eyes Too</span></h2>
+    <p class="sec-sub">Step into a warm, welcoming space designed to complement the richness of our food.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item tall"><img src="https://picsum.photos/seed/restdining/450/600" alt="Dining Hall"/></div>
+      <div class="gallery-item"><img src="https://picsum.photos/seed/restfood1/450/300" alt="Food"/></div>
+      <div class="gallery-item"><img src="https://picsum.photos/seed/restfood2/450/300" alt="Dish"/></div>
+      <div class="gallery-item"><img src="https://picsum.photos/seed/restinter/450/300" alt="Interior"/></div>
+      <div class="gallery-item"><img src="https://picsum.photos/seed/restchef/450/300" alt="Chef"/></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-label">Find Us</div>
+        <h3>Visit &amp; <span style="color:var(--gold)">Contact Us</span></h3>
+        <br/>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Address</h4><p>23, Anna Salai, T. Nagar,<br/>Chennai – 600 017</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div><h4>Timings</h4><p>Mon–Sun: 11:00 AM – 11:00 PM</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><h4>Phone / WhatsApp</h4><p>+91 98765 43210</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email</h4><p>hello@spicegarden.in</p></div>
+        </div>
+        <div class="map-placeholder">🗺️ Google Maps Embedded Here</div>
+      </div>
+      <div class="contact-form-wrap">
+        <div class="sec-label">Reservation</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1.5rem">Book a <span style="color:var(--gold)">Table</span></h3>
+        <form onsubmit="return false">
+          <input type="text" placeholder="Your Name" required/>
+          <input type="tel" placeholder="Phone Number" required/>
+          <input type="date" required/>
+          <select><option value="">Number of Guests</option><option>1-2</option><option>3-4</option><option>5-6</option><option>7+</option></select>
+          <textarea placeholder="Special requests or dietary needs..."></textarea>
+          <button type="submit">Confirm Reservation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Spice Garden</div>
+  <div class="social-links">
+    <a class="social-btn" href="#">📘</a>
+    <a class="social-btn" href="#">📸</a>
+    <a class="social-btn" href="#">🐦</a>
+    <a class="social-btn" href="#">▶️</a>
+  </div>
+  <p>23, Anna Salai, T. Nagar, Chennai | <a href="tel:+919876543210">+91 98765 43210</a> | <a href="mailto:hello@spicegarden.in">hello@spicegarden.in</a></p>
+  <p class="footer-note">© 2025 Spice Garden. Website by <strong>Cherubim AI Infosoft Pvt Ltd</strong> | <a href="https://www.cherubim.in" style="color:var(--orange)">www.cherubim.in</a></p>
+</footer>
+
+<a href="https://wa.me/919876543210" class="float-wa" target="_blank">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
